@@ -1,0 +1,6 @@
+{
+  "name": "Infographic Lịch Công Tác HĐND TPHCM - Tuần 40",
+  "description": "Trang thông tin Infographic tương tác trực quan hóa lịch trình làm việc trọng tâm Tuần 40 của Thường trực và các Ban HĐND TPHCM chuẩn bị cho Kỳ họp thứ 6.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

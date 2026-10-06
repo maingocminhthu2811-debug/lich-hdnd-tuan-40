@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infographic Lịch Công Tác HĐND TPHCM - Tuần 40</title>
+  
+  <!-- SEO & Social Meta Tags chuẩn mực -->
+  <meta name="description" content="Infographic tương tác trực quan hóa lịch trình làm việc trọng tâm Tuần 40 của Thường trực và các Ban HĐND TPHCM chuẩn bị cho Kỳ họp thứ 6." />
+  <meta name="keywords" content="HĐND TPHCM, Thường trực HĐND, Kỳ họp thứ 6, Ban Đô thị, Ban Kinh tế Ngân sách, Ban Pháp chế, Ban Văn hóa Xã hội, Lịch công tác tuần 40" />
+  <meta name="author" content="Thường trực HĐND TPHCM" />
+  <meta property="og:title" content="Infographic Lịch Công Tác HĐND TPHCM - Tuần 40" />
+  <meta property="og:description" content="Trực quan hóa lịch trình làm việc trọng tâm Tuần 40 của Thường trực và các Ban HĐND TPHCM chuẩn bị cho Kỳ họp thứ 6." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#991B1B" />
+
+  <!-- Google Fonts: Be Vietnam Pro, Montserrat & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+            display: ['"Montserrat"', '"Be Vietnam Pro"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            civic: {
+              50: '#fef2f2',
+              100: '#fee2e2',
+              200: '#fecaca',
+              600: '#dc2626',
+              700: '#b91c1c',
+              800: '#991b1b',
+              900: '#7f1d1d',
+              950: '#450a0a',
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            }
+          },
+          keyframes: {
+            'fade-in-up': {
+              '0%': { opacity: '0', transform: 'translateY(28px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          },
+          animation: {
+            'fade-in-up': 'fade-in-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- ==========================================
+       PHẦN 1: CSS TÙY CHỈNH VÀ HIỆU ỨNG MOTION
+       ========================================== -->
+  <style>
+    /* Thanh cuộn trang mượt mà */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Đảm bảo số hiển thị đều đặn (Tabular Numerals) */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Hiệu ứng Fade & Slide cho các phần tử Scroll-Triggered */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Gradient viền tinh tế cho các thẻ infographic */
+    .civic-card-border {
+      position: relative;
+    }
+    .civic-card-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(153, 27, 27, 0.2), rgba(217, 119, 6, 0.15), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* Hiệu ứng scale nhẹ và đổ bóng shadow-lg khi di chuột cho các thẻ .schedule-card */
+    .schedule-card {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+      will-change: transform, box-shadow;
+    }
+    .schedule-card:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Hiệu ứng hover-scale và shadow-2xl mượt mà cho các nút chọn ngày .day-btn */
+    .day-btn {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease;
+      will-change: transform, box-shadow;
+      position: relative;
+    }
+    .day-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.22);
+      z-index: 10;
+    }
+    .day-btn:active {
+      transform: translateY(-1px) scale(1.01);
+    }
+    .day-btn.active {
+      box-shadow: 0 10px 25px -5px rgba(153, 27, 27, 0.4), 0 8px 10px -6px rgba(153, 27, 27, 0.3);
+    }
+    .day-btn.active:hover {
+      box-shadow: 0 25px 50px -12px rgba(153, 27, 27, 0.5);
+    }
+
+    /* Hiệu ứng chuyển động động cho bìa tiêu đề */
+    @keyframes bannerGradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    @keyframes bannerShimmer {
+      0% {
+        transform: translateX(-120%) skewX(-20deg);
+      }
+      100% {
+        transform: translateX(260%) skewX(-20deg);
+      }
+    }
+    @keyframes titleFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+    .hero-banner-animated {
+      background-size: 200% 200%;
+      animation: bannerGradientShift 9s ease infinite;
+    }
+    .hero-title-pulse {
+      animation: titleFloat 4s ease-in-out infinite;
+    }
+    .hero-shimmer-beam {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+      animation: bannerShimmer 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    /* Hiệu ứng fade-in-up tự động khi vừa tải trang với độ trễ 0.3s */
+    @keyframes fadeInUpBanner {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .banner-fade-in-up {
+      opacity: 0;
+      animation: fadeInUpBanner 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+      will-change: opacity, transform;
+    }
+    .hero-banner-animated.banner-fade-in-up {
+      background-size: 200% 200%;
+      animation: fadeInUpBanner 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards, bannerGradientShift 9s ease 0.3s infinite;
+    }
+
+    /* ==========================================================
+       HIỆU ỨNG NỀN CẢ BÀI: GRADIENT TRẮNG - ĐỎ NHẠT - VÀNG NHẠT CÓ CHUYỂN ĐỘNG
+       ========================================================== */
+    @keyframes animatedPageGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    body.page-animated-bg {
+      background: linear-gradient(135deg, #ffffff 0%, #fff1f2 25%, #fffbeb 50%, #fef3c7 72%, #ffe4e6 88%, #ffffff 100%);
+      background-size: 300% 300%;
+      animation: animatedPageGradient 18s ease infinite;
+      min-height: 100vh;
+      background-attachment: fixed;
+    }
+
+    .dark body.page-animated-bg,
+    body.dark.page-animated-bg {
+      background: linear-gradient(135deg, #090D16 0%, #1f1115 25%, #1c170d 50%, #241217 75%, #090D16 100%);
+      background-size: 300% 300%;
+      animation: animatedPageGradient 18s ease infinite;
+      background-attachment: fixed;
+    }
+
+    /* Quầng sáng trôi nổi đa tầng bổ trợ chuyển động mượt mà cho nền */
+    @keyframes floatingLightRed {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(65px, 80px) scale(1.14);
+      }
+      66% {
+        transform: translate(-45px, 50px) scale(0.94);
+      }
+    }
+    @keyframes floatingLightYellow {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(-70px, -60px) scale(1.16);
+      }
+      66% {
+        transform: translate(50px, -35px) scale(0.96);
+      }
+    }
+    @keyframes floatingLightWarm {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(55px, -70px) scale(1.12);
+      }
+    }
+
+    .ambient-drift-red {
+      animation: floatingLightRed 22s ease-in-out infinite;
+      will-change: transform;
+    }
+    .ambient-drift-yellow {
+      animation: floatingLightYellow 26s ease-in-out infinite;
+      will-change: transform;
+    }
+    .ambient-drift-warm {
+      animation: floatingLightWarm 20s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Tối ưu hóa khi in báo cáo (Print Stylesheet) */
+    @media print {
+      body, body.page-animated-bg {
+        background: #fff !important;
+        animation: none !important;
+        color: #000 !important;
+      }
+      .no-print, nav, button {
+        display: none !important;
+      }
+      .reveal-on-scroll, .banner-fade-in-up {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+      }
+      .civic-card-border {
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="page-animated-bg text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300 selection:bg-civic-800 selection:text-white min-h-screen relative">
+
+  <!-- Lớp hiệu ứng chuyển động quầng sáng nền (Trắng, Đỏ nhạt, Vàng nhạt) -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden select-none" aria-hidden="true">
+    <!-- Quầng đỏ nhạt chuyển động phía trên -->
+    <div class="absolute -top-[15%] -left-[10%] w-[60vw] h-[60vw] max-w-[700px] max-h-[700px] bg-rose-200/50 dark:bg-rose-900/20 rounded-full blur-[110px] ambient-drift-red"></div>
+    <!-- Quầng vàng nhạt chuyển động ở giữa bên phải -->
+    <div class="absolute top-[35%] -right-[15%] w-[55vw] h-[55vw] max-w-[650px] max-h-[650px] bg-amber-200/55 dark:bg-amber-900/20 rounded-full blur-[110px] ambient-drift-yellow"></div>
+    <!-- Quầng chuyển sắc đỏ nhạt - vàng nhạt ở góc dưới bên trái -->
+    <div class="absolute -bottom-[15%] left-[15%] w-[65vw] h-[65vw] max-w-[750px] max-h-[750px] bg-red-100/60 dark:bg-red-950/20 rounded-full blur-[120px] ambient-drift-warm"></div>
+  </div>
+
+  <!-- ==========================================
+       PHẦN 2: NỘI DUNG CHÍNH (MAIN CONTENT)
+       Đã loại bỏ các vùng chọn theo yêu cầu
+       ========================================== -->
+  <main id="tong-quan" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- Tiêu đề mở đầu (Bìa nền đỏ đậm trang trọng, chiều cao lớn, chữ in hoa, hiệu ứng chuyển động động và tự động fade-in-up sau 0.3s) -->
+    <div class="banner-fade-in-up hero-banner-animated w-full py-16 sm:py-24 px-6 sm:px-12 min-h-[220px] sm:min-h-[290px] flex items-center justify-center rounded-2xl bg-gradient-to-r from-red-950 via-red-800 to-red-700 shadow-2xl border border-red-700/60 text-center text-white relative overflow-hidden">
+      <!-- Ánh sáng chuyển động quét qua bìa -->
+      <div class="hero-shimmer-beam"></div>
+
+      <!-- Quầng sáng hiệu ứng mềm mại -->
+      <div class="absolute -top-24 -left-24 w-80 h-80 bg-red-600/30 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+      <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-amber-500/20 rounded-full blur-3xl pointer-events-none animate-pulse delay-700"></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <h1 class="hero-title-pulse text-4xl sm:text-5xl lg:text-6xl font-display font-black text-white tracking-wide uppercase leading-tight sm:leading-tight text-center drop-shadow-xl">
+          LỊCH TRÌNH CÔNG TÁC <br> TRỌNG TÂM TUẦN 40
+        </h1>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         PHẦN 3: NỘI DUNG 1 - HOẠT ĐỘNG CHỈ ĐẠO, ĐIỀU HÀNH CỦA THƯỜNG TRỰC HĐND TPHCM
+         ========================================================================= -->
+    <section id="thuong-truc" class="mt-12 scroll-mt-20">
+      
+      <!-- Tiêu đề phân mục NGUYÊN VĂN -->
+      <div class="reveal-on-scroll pb-4 border-b border-slate-200 dark:border-slate-800">
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-red-700 dark:text-red-500 text-center">
+          Hoạt động chỉ đạo, điều hành <br> của Thường trực HĐND TPHCM:
+        </h2>
+      </div>
+
+      <!-- Lưới hiển thị 4 nội dung nguyên văn -->
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6" id="thuong-truc-cards">
+        
+        <!-- MỤC 1.1: Từ ngày 5-10 đến ngày 9-10 (Đồng chí Võ Văn Minh) -->
+        <article data-category="thuong-truc" data-dates="5-10,6-10,7-10,8-10,9-10" class="schedule-card reveal-on-scroll p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/90 dark:border-slate-800 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+            <span class="block font-bold text-civic-800 dark:text-amber-400">Từ ngày 5-10 đến ngày 9-10:</span>
+            <span class="block mt-1">Đồng chí Võ Văn Minh, Ủy viên Trung ương Đảng, Phó Bí thư Thành ủy, Chủ tịch HĐND TPHCM tham dự Hội nghị Ban Chấp hành Trung ương Đảng khóa XIV tại Hà Nội.</span>
+          </p>
+        </article>
+
+        <!-- MỤC 1.2: Chiều 6-10 (Phiên họp cùng lãnh đạo UBND Thành phố) -->
+        <article data-category="thuong-truc" data-dates="6-10" class="schedule-card reveal-on-scroll p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/90 dark:border-slate-800 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+            <span class="block font-bold text-civic-800 dark:text-amber-400">Chiều 6-10:</span>
+            <span class="block mt-1">Thường trực HĐND Thành phố có phiên họp cùng lãnh đạo UBND Thành phố nhằm thống nhất nội dung, chương trình Kỳ họp thứ 6.</span>
+          </p>
+        </article>
+
+        <!-- MỤC 1.3: Ngày 7-10 (Làm việc với Đảng ủy xã Bắc Tân Uyên và Thường Tân) -->
+        <article data-category="thuong-truc" data-dates="7-10" class="schedule-card reveal-on-scroll p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/90 dark:border-slate-800 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+            <span class="block font-bold text-civic-800 dark:text-amber-400">Ngày 7-10:</span>
+            <span class="block mt-1">Thường trực HĐND Thành phố làm việc với Ban Thường vụ Đảng ủy các xã Bắc Tân Uyên và Thường Tân về công tác xây dựng Đảng, phát triển kinh tế - xã hội và hoạt động HĐND.</span>
+          </p>
+        </article>
+
+        <!-- MỤC 1.4: Sáng 11-10 (Chương trình Dân hỏi - Chính quyền trả lời) -->
+        <article data-category="thuong-truc" data-dates="11-10" class="schedule-card reveal-on-scroll p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/90 dark:border-slate-800 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+            <span class="block font-bold text-civic-800 dark:text-amber-400">Sáng 11-10:</span>
+            <span class="block mt-1">HĐND Thành phố phối hợp tổ chức chương trình “Dân hỏi - Chính quyền trả lời” tháng 10 với chủ đề “Tập trung nguồn lực phát triển hoàn thiện hạ tầng giao thông đa phương thức”.</span>
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PHẦN 4: NỘI DUNG 2 - CÔNG TÁC KHẢO SÁT CHUYÊN SÂU CỦA CÁC BAN HĐND
+         ========================================================================= -->
+    <section id="cac-ban" class="mt-14 scroll-mt-20">
+      
+      <!-- Tiêu đề phân mục NGUYÊN VĂN -->
+      <div class="reveal-on-scroll pb-4 border-b border-slate-200 dark:border-slate-800">
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-red-700 dark:text-red-500 text-center">
+          Công tác khảo sát chuyên sâu, <br>chuẩn bị Kỳ họp thứ 6 của các Ban HĐND
+        </h2>
+      </div>
+
+      <!-- Lưới hiển thị 4 Ban chuyên trách -->
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6" id="cac-ban-cards">
+        
+        <!-- BAN 1: Ban Đô thị (Xanh biển) -->
+        <article data-category="ban-do-thi" data-dates="7-10,8-10" class="schedule-card reveal-on-scroll p-6 bg-gradient-to-br from-blue-50/90 via-white to-white dark:from-blue-950/40 dark:via-slate-900 dark:to-slate-900 rounded-xl border border-blue-200/80 dark:border-blue-900/50 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <div class="flex items-center text-xs text-slate-500 dark:text-slate-400 pb-3 border-b border-blue-100 dark:border-blue-900/60">
+            <span class="inline-flex items-center gap-1.5 font-bold text-blue-900 dark:text-blue-300 text-base">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              Ban Đô thị
+            </span>
+          </div>
+
+          <div class="mt-4">
+            <!-- VĂN BẢN NGUYÊN VĂN TUYỆT ĐỐI -->
+            <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+              <span class="block"><span class="font-bold text-blue-700 dark:text-blue-400">Chiều 7-10</span>, khảo sát Sở Xây dựng và Sở QH-KT;</span>
+              <span class="block mt-2"><span class="font-bold text-blue-700 dark:text-blue-400">Sáng 8-10</span>, khảo sát Sở KH-CN về các dự thảo Nghị quyết trình Kỳ họp thứ 6.</span>
+            </p>
+          </div>
+        </article>
+
+        <!-- BAN 2: Ban Văn hóa - Xã hội (Xanh lá) -->
+        <article data-category="ban-vhxh" data-dates="5-10,7-10,8-10,9-10,10-10,11-10" class="schedule-card reveal-on-scroll p-6 bg-gradient-to-br from-emerald-50/90 via-white to-white dark:from-emerald-950/40 dark:via-slate-900 dark:to-slate-900 rounded-xl border border-emerald-200/80 dark:border-emerald-900/50 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <div class="flex items-center text-xs text-slate-500 dark:text-slate-400 pb-3 border-b border-emerald-100 dark:border-emerald-900/60">
+            <span class="inline-flex items-center gap-1.5 font-bold text-emerald-900 dark:text-emerald-300 text-base">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+              Ban Văn hóa - Xã hội
+            </span>
+          </div>
+
+          <div class="mt-4">
+            <!-- VĂN BẢN NGUYÊN VĂN TUYỆT ĐỐI -->
+            <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+              <span class="block"><span class="font-bold text-emerald-700 dark:text-emerald-400">Chiều 5-10</span>, làm việc với Sở VH-TT để cụ thể hóa Luật Phát triển đô thị thuộc lĩnh vực phụ trách.</span>
+              <span class="block mt-2"><span class="font-bold text-emerald-700 dark:text-emerald-400">Từ ngày 7-10 đến 11-10</span>, Đoàn công tác của Ban trao đổi, học tập kinh nghiệm tại các tỉnh thành phía Bắc (Hà Nội, Tuyên Quang, Hà Giang).</span>
+            </p>
+          </div>
+        </article>
+
+        <!-- BAN 3: Ban Pháp chế (Cam) -->
+        <article data-category="ban-phap-che" data-dates="5-10" class="schedule-card reveal-on-scroll p-6 bg-gradient-to-br from-amber-50/90 via-white to-white dark:from-amber-950/40 dark:via-slate-900 dark:to-slate-900 rounded-xl border border-amber-200/80 dark:border-amber-900/50 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <div class="flex items-center text-xs text-slate-500 dark:text-slate-400 pb-3 border-b border-amber-100 dark:border-amber-900/60">
+            <span class="inline-flex items-center gap-1.5 font-bold text-amber-900 dark:text-amber-300 text-base">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              Ban Pháp chế
+            </span>
+          </div>
+
+          <div class="mt-4">
+            <!-- VĂN BẢN NGUYÊN VĂN TUYỆT ĐỐI -->
+            <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+              <span class="block"><span class="font-bold text-amber-600 dark:text-amber-400">Chiều 5-10</span>, làm việc với Sở Nội vụ về việc thực hiện các chế độ đối với các chức danh HĐND cấp xã và lực lượng hoạt động ở khu phố, ấp.</span>
+            </p>
+          </div>
+        </article>
+
+        <!-- BAN 4: Ban Kinh tế - Ngân sách (Hồng đỏ) -->
+        <article data-category="ban-ktns" data-dates="6-10,7-10,8-10" class="schedule-card reveal-on-scroll p-6 bg-gradient-to-br from-rose-50/90 via-white to-white dark:from-rose-950/40 dark:via-slate-900 dark:to-slate-900 rounded-xl border border-rose-200/80 dark:border-rose-900/50 civic-card-border shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300">
+          <div class="flex items-center text-xs text-slate-500 dark:text-slate-400 pb-3 border-b border-rose-100 dark:border-rose-900/60">
+            <span class="inline-flex items-center gap-1.5 font-bold text-rose-900 dark:text-rose-300 text-base">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              Ban Kinh tế - Ngân sách
+            </span>
+          </div>
+
+          <div class="mt-4">
+            <!-- VĂN BẢN NGUYÊN VĂN TUYỆT ĐỐI -->
+            <p class="verbatim-text text-lg text-slate-800 dark:text-slate-100 font-normal leading-relaxed">
+              <span class="block"><span class="font-bold text-rose-600 dark:text-rose-400">Sáng 7-10</span>, khảo sát các dự án đầu tư dự kiến trình tại Kỳ họp thứ 6.</span>
+              <span class="block mt-2"><span class="font-bold text-rose-600 dark:text-rose-400">Ngày 6-10 và 8-10</span>, khảo sát danh mục đề xuất đầu tư xây dựng nông thôn mới tại khu vực Cần Giờ, Bình Chánh.</span>
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PHẦN 5: DÒNG THỜI GIAN TƯƠNG TÁC 7 NGÀY (CHRONOLOGICAL TIMELINE)
+         ========================================================================= -->
+    <section id="dong-thoi-gian" class="mt-16 scroll-mt-20">
+      
+      <div class="reveal-on-scroll pb-4 border-b border-slate-200 dark:border-slate-800">
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-red-700 dark:text-red-500 text-center">
+          Dòng Thời Gian Công Tác Tuần 40 <br> (Từ 5-10 đến 11-10)
+        </h2>
+      </div>
+
+      <!-- Thanh chọn ngày tương tác (Date Selector Rail) -->
+      <div class="reveal-on-scroll mt-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2" id="day-selector-rail">
+        
+        <button onclick="filterByDay('all', this)" class="day-btn active p-3 rounded-lg border border-civic-800 bg-civic-800 text-white text-left transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+          <div class="text-lg font-bold mt-0.5">Tất Cả</div>
+        </button>
+
+        <button onclick="filterByDay('5-10', this)" class="day-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-left hover:border-civic-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">THỨ HAI</div>
+          <div class="text-lg font-bold mt-0.5">5-10</div>
+        </button>
+
+        <button onclick="filterByDay('6-10', this)" class="day-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-left hover:border-civic-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">THỨ BA</div>
+          <div class="text-lg font-bold mt-0.5">6-10</div>
+        </button>
+
+        <button onclick="filterByDay('7-10', this)" class="day-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-left hover:border-civic-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">THỨ TƯ</div>
+          <div class="text-lg font-bold mt-0.5">7-10</div>
+        </button>
+
+        <button onclick="filterByDay('8-10', this)" class="day-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-left hover:border-civic-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">THỨ NĂM</div>
+          <div class="text-lg font-bold mt-0.5">8-10</div>
+        </button>
+
+        <button onclick="filterByDay('9-10', this)" class="day-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-left hover:border-civic-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">THỨ SÁU</div>
+          <div class="text-lg font-bold mt-0.5">9-10</div>
+        </button>
+
+        <button onclick="filterByDay('10-10', this)" class="day-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-left hover:border-civic-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">THỨ BẢY</div>
+          <div class="text-lg font-bold mt-0.5">10-10</div>
+        </button>
+
+        <button onclick="filterByDay('11-10', this)" class="day-btn p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-left hover:border-civic-700 hover:scale-105 hover:shadow-2xl transition-all duration-300">
+          <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">CHỦ NHẬT</div>
+          <div class="text-lg font-bold mt-0.5">11-10</div>
+        </button>
+
+      </div>
+
+      <!-- Danh sách diễn biến tuần (Timeline Tree) -->
+      <div class="mt-8 relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-8" id="chronological-timeline-list">
+        
+        <!-- Mốc 5-10 -->
+        <div class="timeline-item reveal-on-scroll relative" data-day="5-10">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-civic-800 border-4 border-white dark:border-[#090D16]"></div>
+          <div class="text-base font-mono font-bold text-civic-800 dark:text-amber-400 tracking-wider">NGÀY 5-10-2026 (THỨ HAI)</div>
+          <div class="mt-2 space-y-3">
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Từ 5-10 đến 9-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đồng chí Võ Văn Minh, Ủy viên Trung ương Đảng, Phó Bí thư Thành ủy, Chủ tịch HĐND TPHCM tham dự Hội nghị Ban Chấp hành Trung ương Đảng khóa XIV tại Hà Nội.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-emerald-700 dark:text-emerald-400">Chiều 5-10 · Ban Văn hóa - Xã hội:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Làm việc với Sở VH-TT để cụ thể hóa Luật Phát triển đô thị thuộc lĩnh vực phụ trách.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-amber-600 dark:text-amber-400">Chiều 5-10 · Ban Pháp chế:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Làm việc với Sở Nội vụ về việc thực hiện các chế độ đối với các chức danh HĐND cấp xã và lực lượng hoạt động ở khu phố, ấp.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mốc 6-10 -->
+        <div class="timeline-item reveal-on-scroll relative" data-day="6-10">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white dark:border-[#090D16]"></div>
+          <div class="text-base font-mono font-bold text-civic-800 dark:text-amber-400 tracking-wider">NGÀY 6-10-2026 (THỨ BA)</div>
+          <div class="mt-2 space-y-3">
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Từ 5-10 đến 9-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đồng chí Võ Văn Minh, Ủy viên Trung ương Đảng, Phó Bí thư Thành ủy, Chủ tịch HĐND TPHCM tham dự Hội nghị Ban Chấp hành Trung ương Đảng khóa XIV tại Hà Nội.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Chiều 6-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Thường trực HĐND Thành phố có phiên họp cùng lãnh đạo UBND Thành phố nhằm thống nhất nội dung, chương trình Kỳ họp thứ 6.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-rose-600 dark:text-rose-400">Ngày 6-10 · Ban Kinh tế - Ngân sách:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Khảo sát danh mục đề xuất đầu tư xây dựng nông thôn mới tại khu vực Cần Giờ, Bình Chánh.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mốc 7-10 -->
+        <div class="timeline-item reveal-on-scroll relative" data-day="7-10">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white dark:border-[#090D16]"></div>
+          <div class="text-base font-mono font-bold text-civic-800 dark:text-amber-400 tracking-wider">NGÀY 7-10-2026 (THỨ TƯ)</div>
+          <div class="mt-2 space-y-3">
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Từ 5-10 đến 9-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đồng chí Võ Văn Minh, Ủy viên Trung ương Đảng, Phó Bí thư Thành ủy, Chủ tịch HĐND TPHCM tham dự Hội nghị Ban Chấp hành Trung ương Đảng khóa XIV tại Hà Nội.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Ngày 7-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Thường trực HĐND Thành phố làm việc với Ban Thường vụ Đảng ủy các xã Bắc Tân Uyên và Thường Tân về công tác xây dựng Đảng, phát triển kinh tế - xã hội và hoạt động HĐND.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-blue-700 dark:text-blue-400">Chiều 7-10 · Ban Đô thị:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Khảo sát Sở Xây dựng và Sở QH-KT về các dự thảo Nghị quyết trình Kỳ họp thứ 6.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-rose-600 dark:text-rose-400">Sáng 7-10 · Ban Kinh tế - Ngân sách:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Khảo sát các dự án đầu tư dự kiến trình tại Kỳ họp thứ 6.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-emerald-700 dark:text-emerald-400">Từ 7-10 đến 11-10 · Ban Văn hóa - Xã hội:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đoàn công tác của Ban trao đổi, học tập kinh nghiệm tại các tỉnh thành phía Bắc (Hà Nội, Tuyên Quang, Hà Giang).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mốc 8-10 -->
+        <div class="timeline-item reveal-on-scroll relative" data-day="8-10">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white dark:border-[#090D16]"></div>
+          <div class="text-base font-mono font-bold text-civic-800 dark:text-amber-400 tracking-wider">NGÀY 8-10-2026 (THỨ NĂM)</div>
+          <div class="mt-2 space-y-3">
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Từ 5-10 đến 9-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đồng chí Võ Văn Minh, Ủy viên Trung ương Đảng, Phó Bí thư Thành ủy, Chủ tịch HĐND TPHCM tham dự Hội nghị Ban Chấp hành Trung ương Đảng khóa XIV tại Hà Nội.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-emerald-700 dark:text-emerald-400">Từ 7-10 đến 11-10 · Ban Văn hóa - Xã hội:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đoàn công tác của Ban trao đổi, học tập kinh nghiệm tại các tỉnh thành phía Bắc (Hà Nội, Tuyên Quang, Hà Giang).</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-blue-700 dark:text-blue-400">Sáng 8-10 · Ban Đô thị:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Khảo sát Sở KH-CN về các dự thảo Nghị quyết trình Kỳ họp thứ 6.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-rose-600 dark:text-rose-400">Ngày 8-10 · Ban Kinh tế - Ngân sách:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Khảo sát danh mục đề xuất đầu tư xây dựng nông thôn mới tại khu vực Cần Giờ, Bình Chánh.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mốc 9-10 -->
+        <div class="timeline-item reveal-on-scroll relative" data-day="9-10">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white dark:border-[#090D16]"></div>
+          <div class="text-base font-mono font-bold text-civic-800 dark:text-amber-400 tracking-wider">NGÀY 9-10-2026 (THỨ SÁU)</div>
+          <div class="mt-2 space-y-3">
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Từ 5-10 đến 9-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đồng chí Võ Văn Minh, Ủy viên Trung ương Đảng, Phó Bí thư Thành ủy, Chủ tịch HĐND TPHCM tham dự Hội nghị Ban Chấp hành Trung ương Đảng khóa XIV tại Hà Nội.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-emerald-700 dark:text-emerald-400">Từ 7-10 đến 11-10 · Ban Văn hóa - Xã hội:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đoàn công tác của Ban trao đổi, học tập kinh nghiệm tại các tỉnh thành phía Bắc (Hà Nội, Tuyên Quang, Hà Giang).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mốc 10-10 -->
+        <div class="timeline-item reveal-on-scroll relative" data-day="10-10">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white dark:border-[#090D16]"></div>
+          <div class="text-base font-mono font-bold text-civic-800 dark:text-amber-400 tracking-wider">NGÀY 10-10-2026 (THỨ BẢY)</div>
+          <div class="mt-2 space-y-3">
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-emerald-700 dark:text-emerald-400">Từ 7-10 đến 11-10 · Ban Văn hóa - Xã hội:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đoàn công tác của Ban trao đổi, học tập kinh nghiệm tại các tỉnh thành phía Bắc (Hà Nội, Tuyên Quang, Hà Giang).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mốc 11-10 -->
+        <div class="timeline-item reveal-on-scroll relative" data-day="11-10">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-civic-800 border-4 border-white dark:border-[#090D16]"></div>
+          <div class="text-base font-mono font-bold text-civic-800 dark:text-amber-400 tracking-wider">NGÀY 11-10-2026 (CHỦ NHẬT)</div>
+          <div class="mt-2 space-y-3">
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-red-700 dark:text-red-400">Sáng 11-10:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">HĐND Thành phố phối hợp tổ chức chương trình “Dân hỏi - Chính quyền trả lời” tháng 10 với chủ đề “Tập trung nguồn lực phát triển hoàn thiện hạ tầng giao thông đa phương thức”.</p>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
+              <span class="text-base font-semibold text-emerald-700 dark:text-emerald-400">Từ 7-10 đến 11-10 · Ban Văn hóa - Xã hội:</span>
+              <p class="text-lg text-slate-800 dark:text-slate-200 mt-1 font-normal">Đoàn công tác của Ban trao đổi, học tập kinh nghiệm tại các tỉnh thành phía Bắc (Hà Nội, Tuyên Quang, Hà Giang).</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       PHẦN 6: JAVASCRIPT XỬ LÝ TƯƠNG TÁC & BỘ LỌC
+       ========================================================================= -->
+  <script>
+    /* ==========================================================
+       1. KHỞI TẠO BIẾN TRẠNG THÁI
+       ========================================================== */
+    let currentFilter = 'all';
+    let currentDayFilter = 'all';
+
+    /* ==========================================================
+       2. SCROLL-TRIGGERED ANIMATIONS (INTERSECTION OBSERVER)
+       ========================================================== */
+    function initScrollObserver() {
+      const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
+      
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      elementsToReveal.forEach(el => observer.observe(el));
+    }
+
+    /* ==========================================================
+       3. XỬ LÝ BỘ LỌC PHÂN HỆ (CATEGORY FILTER)
+       ========================================================== */
+    function setFilter(category) {
+      currentFilter = category;
+
+      const buttons = document.querySelectorAll('#filter-buttons-container .filter-btn');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.classList.add('active', 'bg-civic-800', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-slate-600', 'dark:text-slate-300');
+        } else {
+          btn.classList.remove('active', 'bg-civic-800', 'text-white', 'shadow-sm');
+          btn.classList.add('text-slate-600', 'dark:text-slate-300');
+        }
+      });
+
+      applyCombinedFilters();
+    }
+
+    /* ==========================================================
+       4. XỬ LÝ BỘ LỌC THEO NGÀY TRONG TUẦN (DAY FILTER)
+       ========================================================== */
+    function filterByDay(day, buttonElement) {
+      currentDayFilter = day;
+
+      const dayButtons = document.querySelectorAll('#day-selector-rail .day-btn');
+      dayButtons.forEach(btn => {
+        btn.classList.remove('active', 'border-civic-800', 'bg-civic-800', 'text-white');
+        btn.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-800', 'dark:text-slate-200');
+      });
+
+      if (buttonElement) {
+        buttonElement.classList.add('active', 'border-civic-800', 'bg-civic-800', 'text-white');
+        buttonElement.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-800', 'dark:text-slate-200');
+      }
+
+      applyCombinedFilters();
+
+      const timelineSection = document.getElementById('dong-thoi-gian');
+      if (timelineSection && day !== 'all') {
+        timelineSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    /* ==========================================================
+       5. ÁP DỤNG BỘ LỌC TỔNG HỢP
+       ========================================================== */
+    function applyCombinedFilters() {
+      const allCards = document.querySelectorAll('.schedule-card');
+      const timelineItems = document.querySelectorAll('.timeline-item');
+
+      // Lọc các thẻ Infographic
+      allCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        const cardDates = card.getAttribute('data-dates') ? card.getAttribute('data-dates').split(',') : [];
+
+        const matchCategory = (currentFilter === 'all') || (cardCategory === currentFilter);
+        const matchDay = (currentDayFilter === 'all') || cardDates.includes(currentDayFilter);
+
+        if (matchCategory && matchDay) {
+          card.style.display = '';
+          card.classList.add('is-revealed');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Lọc danh sách dòng thời gian 7 ngày
+      timelineItems.forEach(item => {
+        const itemDay = item.getAttribute('data-day');
+        const matchDay = (currentDayFilter === 'all') || (itemDay === currentDayFilter);
+
+        if (matchDay) {
+          item.style.display = '';
+          item.classList.add('is-revealed');
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    /* ==========================================================
+       6. KHỞI CHẠY KHI TẢI TRANG
+       ========================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      initScrollObserver();
+    });
+  </script>
+</body>
+</html>
